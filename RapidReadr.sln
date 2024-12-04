@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidReadr.Server", "RapidReadr.Server\RapidReadr.Server.csproj", "{0AD278B4-7CB4-482E-82EE-F2580FE8F500}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "rapidreadr.client", "rapidreadr.client\rapidreadr.client.esproj", "{397A6145-EED4-4CA9-918C-4F9333CCDF85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AD278B4-7CB4-482E-82EE-F2580FE8F500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AD278B4-7CB4-482E-82EE-F2580FE8F500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AD278B4-7CB4-482E-82EE-F2580FE8F500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AD278B4-7CB4-482E-82EE-F2580FE8F500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8CA47E8-7B6F-44D6-AD94-E956A844A393}
+	EndGlobalSection
+EndGlobal
