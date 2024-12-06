@@ -9,3 +9,11 @@ th, td {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
+.containerbox {
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+    background-color: white;
+    padding: 20px;
+    text-align: left;
+}

@@ -1,16 +1,18 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-
-
+import Home from './Pages/HomePage.tsx';
+import Login from './Pages/Login.tsx';
+import Register from './Pages/Register.tsx';
 function App() {
-    
-
     return (
-        <div>
-            <h1 id="">Welcome</h1>
-            
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
-
 export default App;
