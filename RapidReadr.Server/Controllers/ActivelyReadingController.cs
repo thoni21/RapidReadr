@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RapidReadr.Server.Data;
 using RapidReadr.Server.Models;
 using System.Security.Claims;
 
@@ -9,6 +10,17 @@ namespace RapidReadr.Server.Controllers
     [ApiController]
     public class ActivelyReadingController : ControllerBase
     {
+        private readonly ApplicationDbContext _dbContext;
+
+        public ActivelyReadingController(ApplicationDbContext dbContext) { 
+            _dbContext = dbContext;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<ActivelyReading>> HandlePdf()
+        {
+            return _dbContext.ActivelyReadings.ToList();
+        }
 
         // get text from db when user wants to read
 
@@ -16,14 +28,6 @@ namespace RapidReadr.Server.Controllers
 
         // delete when user is finished 
 
-        // save in db
-        [HttpPost]
-        public ActionResult<ActivelyReading> HandlePdf(string path)
-        {
-            // Get the logged-in user's ID from the token
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            return Ok();
-        }
+        // save in db       
     }
 }

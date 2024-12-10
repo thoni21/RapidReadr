@@ -19,6 +19,7 @@ function FileUploader() {
             try {
                 const result = await fetch('https://localhost:7214/api/Pdf/upload', {
                     method: 'POST',
+                    credentials: 'include',
                     body: formData,
                 });
 
