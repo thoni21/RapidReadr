@@ -34,7 +34,6 @@ namespace RapidReadr.Server.Controllers
         [HttpPost("upload")]
         public async Task<IActionResult> UploadPdf(IFormFile file)
         {
-
             if (User.FindFirstValue(ClaimTypes.Email) is not string _userId)
             {
                 return BadRequest("No user found.");
@@ -80,7 +79,5 @@ namespace RapidReadr.Server.Controllers
 
             return Ok(new { message = "PDF uploaded successfully.", fileName = Path.GetFileName(filePath) });
         }
-
-
     }
 }
