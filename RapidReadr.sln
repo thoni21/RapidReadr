@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidReadr.Server", "RapidReadr.Server\RapidReadr.Server.csproj", "{0AD278B4-7CB4-482E-82EE-F2580FE8F500}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidReadr.Server", "RapidReadr.Server\RapidReadr.Server.csproj", "{0AD278B4-7CB4-482E-82EE-F2580FE8F500}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "rapidreadr.client", "rapidreadr.client\rapidreadr.client.esproj", "{397A6145-EED4-4CA9-918C-4F9333CCDF85}"
 EndProject

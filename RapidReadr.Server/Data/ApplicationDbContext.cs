@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RapidReadr.Server.Models;
 
 namespace RapidReadr.Server.Data
 {
@@ -13,5 +14,7 @@ namespace RapidReadr.Server.Data
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<ActivelyReading> ActivelyReadings { get; set; }
     }
 }

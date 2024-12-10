@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, createContext } from 'react';
 import { Navigate } from 'react-router-dom';
 const UserContext = createContext({});
@@ -7,13 +8,13 @@ interface User {
 function AuthorizeView(props: { children: React.ReactNode }) {
     const [authorized, setAuthorized] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true); // add a loading state
-    let emptyuser: User = { email: "" };
+    const emptyuser: User = { email: "" };
     const [user, setUser] = useState(emptyuser);
     useEffect(() => {
         // Get the cookie value
         let retryCount = 0; // initialize the retry count
-        let maxRetries = 10; // set the maximum number of retries
-        let delay: number = 1000; // set the delay in milliseconds
+        const maxRetries = 10; // set the maximum number of retries
+        const delay: number = 1000; // set the delay in milliseconds
         // define a delay function that returns a promise
         function wait(delay: number) {
             return new Promise((resolve) => setTimeout(resolve, delay));
@@ -22,11 +23,11 @@ function AuthorizeView(props: { children: React.ReactNode }) {
         async function fetchWithRetry(url: string, options: any) {
             try {
                 // make the fetch request
-                let response = await fetch(url, options);
+                const response = await fetch(url, options);
                 // check the status code
                 if (response.status == 200) {
                     console.log("Authorized");
-                    let j: any = await response.json();
+                    const j: any = await response.json();
                     setUser({ email: j.email });
                     setAuthorized(true);
                     return response; // return the response

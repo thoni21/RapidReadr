@@ -14,7 +14,7 @@ function LogoutLink(props: { children: React.ReactNode }) {
                 if (data.ok) {
                     navigate("/login");
                 }
-                else { }
+                else { /* empty */ }
             })
             .catch((error) => {
                 console.error(error);
