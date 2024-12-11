@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidReadr.Server", "RapidR
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "rapidreadr.client", "rapidreadr.client\rapidreadr.client.esproj", "{397A6145-EED4-4CA9-918C-4F9333CCDF85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidReadr.Tests", "RapidReadr.Tests\RapidReadr.Tests.csproj", "{FEF6DF1C-9916-4260-9B46-9D29B5220F5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{397A6145-EED4-4CA9-918C-4F9333CCDF85}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FEF6DF1C-9916-4260-9B46-9D29B5220F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF6DF1C-9916-4260-9B46-9D29B5220F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF6DF1C-9916-4260-9B46-9D29B5220F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF6DF1C-9916-4260-9B46-9D29B5220F5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

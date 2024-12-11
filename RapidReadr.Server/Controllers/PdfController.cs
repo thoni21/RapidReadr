@@ -79,5 +79,7 @@ namespace RapidReadr.Server.Controllers
 
             return Ok(new { message = "PDF uploaded successfully.", fileName = Path.GetFileName(filePath) });
         }
+
+
     }
 }
