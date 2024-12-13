@@ -2,7 +2,10 @@ using DotNetEnv;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RapidReadr.Server.Data;
+using RapidReadr.Server.Repository.Interfaces;
+using RapidReadr.Server.Repository;
 using System.Security.Claims;
+using RapidReadr.Server.Service;
 
 Env.Load();
 
@@ -32,6 +35,10 @@ builder.Services.AddCors(options =>
               .AllowCredentials();                //Allow credentials
     });
 });
+
+builder.Services.AddScoped<IActivelyReadingRepository, ActivelyReadingRepository>();
+builder.Services.AddScoped<ActivelyReadingService>();
+
 
 var app = builder.Build();
 

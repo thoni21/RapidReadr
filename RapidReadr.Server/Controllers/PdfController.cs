@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RapidReadr.Server.Data;
 using RapidReadr.Server.Models;
+using RapidReadr.Server.Service;
 using System.Security.Claims;
 
 namespace RapidReadr.Server.Controllers
@@ -13,16 +14,16 @@ namespace RapidReadr.Server.Controllers
     {
         // Implement cloud storage instead
         private readonly string _pdfDirectory;
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ActivelyReadingService _activelyReadingService;
 
-        public PdfController(IConfiguration configuration, ApplicationDbContext dbcontext)
+        public PdfController(IConfiguration configuration, ActivelyReadingService activelyReadingService)
         {
             if (configuration["FileStorage:BasePath"] is not string pdfDirectory) {
                 throw new ArgumentNullException("Path to PDF directory cannot be null");
             }
 
             _pdfDirectory = pdfDirectory;
-            _dbContext = dbcontext;
+            _activelyReadingService = activelyReadingService;
 
             if (!Directory.Exists(_pdfDirectory))
             {
@@ -74,12 +75,9 @@ namespace RapidReadr.Server.Controllers
                 userId = _userId
             };
 
-            _dbContext.ActivelyReadings.Add(fileMetadata);
-            await _dbContext.SaveChangesAsync();
+            await _activelyReadingService.AddAsync(fileMetadata);
 
             return Ok(new { message = "PDF uploaded successfully.", fileName = Path.GetFileName(filePath) });
         }
-
-
     }
 }
