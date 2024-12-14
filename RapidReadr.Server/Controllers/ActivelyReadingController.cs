@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RapidReadr.Server.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using RapidReadr.Server.Models;
-using System.Security.Claims;
+using RapidReadr.Server.Service;
 
 namespace RapidReadr.Server.Controllers
 {
@@ -10,24 +8,44 @@ namespace RapidReadr.Server.Controllers
     [ApiController]
     public class ActivelyReadingController : ControllerBase
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ActivelyReadingService _activelyReadingService;
 
-        public ActivelyReadingController(ApplicationDbContext dbContext) { 
-            _dbContext = dbContext;
+        public ActivelyReadingController(ActivelyReadingService activelyReadingService) {
+            _activelyReadingService = activelyReadingService;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<ActivelyReading>> HandlePdf()
+        public async Task<IEnumerable<ActivelyReading>> GetAll()
         {
-            return _dbContext.ActivelyReadings.ToList();
+            return await _activelyReadingService.GetAllAsync();
         }
 
-        // get text from db when user wants to read
+        [HttpGet("{id}")]
+        public async Task<ActivelyReading> GetById(int id) { 
+            return await _activelyReadingService.GetByIdAsync(id);
+        }
 
-        // save "timestamp" for what index user is at during reading
+        [HttpGet("user/{userId}")]
+        public async Task<IEnumerable<ActivelyReading>> GetAllByUserId(string userId)
+        {
+            return await _activelyReadingService.GetAllByUserIdAsync(userId);
+        }
 
-        // delete when user is finished 
+        [HttpPost]
+        public async Task Add(ActivelyReading activelyReading)
+        {
+            await _activelyReadingService.AddAsync(activelyReading);
+        }
 
-        // save in db       
+        [HttpPut]
+        public async Task Update(ActivelyReading activelyReading) {
+            await _activelyReadingService.UpdateAsync(activelyReading);
+        }
+
+        [HttpDelete]
+        public async Task Delete(int id)
+        {
+            await _activelyReadingService.DeleteAsync(id);
+        }
     }
 }

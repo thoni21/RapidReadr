@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RapidReadr.Server.Data;
 using RapidReadr.Server.Models;
 using RapidReadr.Server.Service;
 using System.Security.Claims;
@@ -30,6 +28,11 @@ namespace RapidReadr.Server.Controllers
                 Directory.CreateDirectory(_pdfDirectory);
             }
         }
+        // Alt ift. post, get etc. af pdf skal ske herinde
+
+        // Mapping osv. af pdf gennem helpers
+
+        // 
 
         [Authorize]
         [HttpPost("upload")]
