@@ -4,7 +4,10 @@ import FileUploader from "../Components/FileUploader.tsx";
 function HomePage() {
     return (
         <AuthorizeView>
-            <FileUploader/>
+            <FileUploader />
+            <a href="/choose">
+                <button>Choose Pdf Page</button>
+            </a>
             <span><LogoutLink>Logout <AuthorizedUser value="email" /></LogoutLink></span>
         </AuthorizeView>
     );

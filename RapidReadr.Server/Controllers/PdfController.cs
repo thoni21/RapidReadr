@@ -49,7 +49,7 @@ namespace RapidReadr.Server.Controllers
         }
 
         [Authorize]
-        [HttpPost("upload")]
+        [HttpPost]
         public async Task<IActionResult> UploadPdf(IFormFile file)
         {
             if (User.FindFirstValue(ClaimTypes.Email) is not string _userId)
