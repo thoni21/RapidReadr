@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RapidReadr.Server.Models;
 using RapidReadr.Server.Service;
+using System.Security.Claims;
 
 namespace RapidReadr.Server.Controllers
 {
@@ -25,10 +27,16 @@ namespace RapidReadr.Server.Controllers
             return await _activelyReadingService.GetByIdAsync(id);
         }
 
-        [HttpGet("user/{userId}")]
-        public async Task<IEnumerable<ActivelyReading>> GetAllByUserId(string userId)
+        [Authorize]
+        [HttpGet("user")]
+        public async Task<IEnumerable<ActivelyReading>> GetAllByUserId()
         {
-            return await _activelyReadingService.GetAllByUserIdAsync(userId);
+            if (User.FindFirstValue(ClaimTypes.Email) is not string _userId)
+            {
+                throw new InvalidOperationException("No user found.");
+            }
+
+            return await _activelyReadingService.GetAllByUserIdAsync(_userId);
         }
 
         [HttpPost]

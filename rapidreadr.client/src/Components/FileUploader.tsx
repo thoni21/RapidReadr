@@ -41,7 +41,7 @@ function FileUploader() {
             {file && (
                 <button
                     onClick={handleUpload}
-                    className="submit"
+                    className="submit mt-2"
                 >Upload a file</button>
             )}
         </div>

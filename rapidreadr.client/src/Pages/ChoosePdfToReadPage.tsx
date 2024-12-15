@@ -1,30 +1,42 @@
-import { useNavigate } from "react-router-dom";
 import AuthorizeView from "../Components/AuthorizeView";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import UploadedPdfCard from "../Components/UploadedPdfCard";
+
+interface ActivelyReading {
+    id: string;
+    userId: string;
+    path: string;
+    dateUploaded: Date;
+    timestamp: number;
+}
 
 function ChoosePdfToReadPage() {
+    const [activelyReadingArray, setActivelyReadingArray] = useState<ActivelyReading[]>([]);
 
-    const [pdfId, setId] = useState<number | "">("");
-    const navigate = useNavigate();
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (pdfId) {
-            navigate(`/display/${pdfId}`);
-        }
-    };
+    useEffect(() => {
+        fetch(`https://localhost:7214/api/ActivelyReading/user`, {
+            method: 'GET',
+            credentials: 'include',
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            setActivelyReadingArray(data);
+        })
+        .catch((error) => {
+            console.error('Error fetching actively reading data:', error);
+        });
+    })
 
     return (
         <AuthorizeView>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="number"
-                    value={pdfId === "" ? "" : pdfId}
-                    onChange={(e) => setId(Number(e.target.value) || "")}
-                    placeholder="Enter numeric ID"
-                />
-                <button type="submit">Go</button>
-            </form>
+            {activelyReadingArray.map((item) => (
+                <UploadedPdfCard pdfId={item.id} pdfName={item.path} />
+            ))}
         </AuthorizeView>
     )
 }
