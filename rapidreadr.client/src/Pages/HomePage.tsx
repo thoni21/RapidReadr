@@ -11,7 +11,8 @@ function HomePage() {
                 <div className="p-3 mb-2">
                     <a href="/choose">
                         <button>Choose Pdf Page</button>
-                    </a>                </div>
+                    </a>
+                </div>
                 <div className="p-3 mb-2">
                     <span><LogoutLink>Logout <AuthorizedUser value="email" /></LogoutLink></span>
                 </div>
