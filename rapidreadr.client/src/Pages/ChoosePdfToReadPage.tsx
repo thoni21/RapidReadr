@@ -8,9 +8,9 @@ function ChoosePdfToReadPage() {
     const navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault(); // Prevents page reload
+        e.preventDefault();
         if (pdfId) {
-            navigate(`/display/${pdfId}`); // Navigate to the details page with the ID
+            navigate(`/display/${pdfId}`);
         }
     };
 
