@@ -1,4 +1,5 @@
 ﻿using UglyToad.PdfPig;
+using UglyToad.PdfPig.Content;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
 
 namespace RapidReadr.Server.Helpers
@@ -9,12 +10,11 @@ namespace RapidReadr.Server.Helpers
             
             PdfDocument pdf = PdfDocument.Open(path);
 
-            //to be array
             var text = "";
 
-            foreach (var page in pdf.GetPages())
+            foreach (Page page in pdf.GetPages())
             {
-                text = text + string.Join(" ", page.GetWords()) + " "; 
+                text += ContentOrderTextExtractor.GetText(page) + " ";
             }
 
             return text;

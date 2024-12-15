@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RapidReadr.Server.Helpers;
 using RapidReadr.Server.Models;
 using RapidReadr.Server.Service;
 using System.Security.Claims;
@@ -13,8 +14,9 @@ namespace RapidReadr.Server.Controllers
         // Implement cloud storage instead
         private readonly string _pdfDirectory;
         private readonly ActivelyReadingService _activelyReadingService;
+        private readonly PdfHelper _pdfHelper;
 
-        public PdfController(IConfiguration configuration, ActivelyReadingService activelyReadingService)
+        public PdfController(IConfiguration configuration, ActivelyReadingService activelyReadingService, PdfHelper pdfHelper)
         {
             if (configuration["FileStorage:BasePath"] is not string pdfDirectory) {
                 throw new ArgumentNullException("Path to PDF directory cannot be null");
@@ -22,6 +24,7 @@ namespace RapidReadr.Server.Controllers
 
             _pdfDirectory = pdfDirectory;
             _activelyReadingService = activelyReadingService;
+            _pdfHelper = pdfHelper;
 
             if (!Directory.Exists(_pdfDirectory))
             {
@@ -32,7 +35,18 @@ namespace RapidReadr.Server.Controllers
 
         // Mapping osv. af pdf gennem helpers
 
-        // 
+
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<string>> GetPdfToEnum(int id)
+        {
+            if (await _activelyReadingService.GetByIdAsync(id) is not ActivelyReading activelyReading)
+            {
+                return BadRequest("No item with that id exists");
+            }
+
+            return _pdfHelper.MapPDF(activelyReading.path);
+        }
 
         [Authorize]
         [HttpPost("upload")]

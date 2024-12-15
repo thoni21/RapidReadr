@@ -20,7 +20,6 @@ namespace RapidReadr.Tests
             var result = pdfHelper.MapPDF("C:/SharedResources/PDFs/PdfToUpload.pdf");
 
             // Assert
-
             Assert.IsInstanceOf<string>(result);
         }
     }

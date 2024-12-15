@@ -6,6 +6,7 @@ using RapidReadr.Server.Repository.Interfaces;
 using RapidReadr.Server.Repository;
 using System.Security.Claims;
 using RapidReadr.Server.Service;
+using RapidReadr.Server.Helpers;
 
 Env.Load();
 
@@ -38,6 +39,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IActivelyReadingRepository, ActivelyReadingRepository>();
 builder.Services.AddScoped<ActivelyReadingService>();
+builder.Services.AddScoped<PdfHelper>();
+
 
 
 var app = builder.Build();
