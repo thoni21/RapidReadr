@@ -30,7 +30,7 @@ function ChoosePdfToReadPage() {
         .catch((error) => {
             console.error('Error fetching actively reading data:', error);
         });
-    })
+    }, [])
 
     return (
         <AuthorizeView>
