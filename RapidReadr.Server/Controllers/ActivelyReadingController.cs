@@ -50,7 +50,7 @@ namespace RapidReadr.Server.Controllers
             await _activelyReadingService.UpdateAsync(activelyReading);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
             await _activelyReadingService.DeleteAsync(id);
