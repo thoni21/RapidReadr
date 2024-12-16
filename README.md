@@ -6,8 +6,10 @@ and set a speed at which they can read the PDF one word at a time.
 When I was 14 or 15 years old, I had a teacher who introduced us to a website designed to improve reading speed, where we read short stories using this exact technique. After each story, we took a brief quiz to test our understanding of the material. The goal was to enhance reading comprehension and speed. I found this method to be incredibly effective, and over the years, I’ve often found myself returning to the concept. As a result, I decided to create a web app that would allow me to apply this technique to text from my PDFs, whether for homework or leisure reading.
 <h2>Goal</h2>
 The goal of the web app is to allow people to read and understand their documents at a pace that they would not otherwise be able to achieve with normal reading techniques.
-<h2>Technologies Used</h2>
 
+<h2>Preview</h2>
+![Preview Web App Main Feature](https://github.com/user-attachments/assets/8173ce30-2a19-47b7-a4b4-b10b07fe685a)
+<h2>Technologies Used</h2>
 ### Backend
 - **ASP.NET Core (Web API)**
 - **ASP.NET Identity** for authentication
