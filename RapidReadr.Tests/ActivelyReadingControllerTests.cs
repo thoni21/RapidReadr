@@ -5,12 +5,8 @@ using RapidReadr.Server.Controllers;
 using RapidReadr.Server.Models;
 using RapidReadr.Server.Repository.Interfaces;
 using RapidReadr.Server.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace RapidReadr.Tests
 {
@@ -53,7 +49,7 @@ namespace RapidReadr.Tests
             // Assert
             var okResult = result as IEnumerable<ActivelyReading>;
             Assert.IsNotNull(okResult);
-            Assert.AreEqual(2, okResult?.Count());
+            Assert.That(okResult?.Count(), Is.EqualTo(2));
         }
 
         [Test]
@@ -70,7 +66,7 @@ namespace RapidReadr.Tests
 
             // Assert
             Assert.IsInstanceOf<ActivelyReading>(result);
-            Assert.AreEqual(expectedReading, result);
+            Assert.That(result, Is.EqualTo(expectedReading));
         }
 
         [Test]
@@ -105,7 +101,7 @@ namespace RapidReadr.Tests
             // Assert
             var okResult = result as IEnumerable<ActivelyReading>;
             Assert.IsNotNull(okResult);
-            Assert.AreEqual(2, okResult?.Count());
+            Assert.That(okResult?.Count(), Is.EqualTo(2));
         }
 
     [Test]

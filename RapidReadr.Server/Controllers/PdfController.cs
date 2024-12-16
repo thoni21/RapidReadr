@@ -31,14 +31,9 @@ namespace RapidReadr.Server.Controllers
                 Directory.CreateDirectory(_pdfDirectory);
             }
         }
-        // Alt ift. post, get etc. af pdf skal ske herinde
-
-        // Mapping osv. af pdf gennem helpers
-
-
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<string>> GetPdfToEnum(int id)
+        public async Task<ActionResult<string>> GetPdfText(int id)
         {
             if (await _activelyReadingService.GetByIdAsync(id) is not ActivelyReading activelyReading)
             {
