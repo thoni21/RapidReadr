@@ -2,8 +2,10 @@ import { useState } from "react";
 
 function FileUploader() {
     const [file, setFile] = useState<File | null>(null);
+    const [responseText, setResponseText] = useState<string>("");
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setResponseText("")
         if (e.target.files) {
             setFile(e.target.files[0]);
         }
@@ -26,8 +28,10 @@ function FileUploader() {
                 const data = await result.json();
 
                 console.log(data);
+                setResponseText("File uploaded successfully!")
             } catch (error) {
                 console.error(error);
+                setResponseText("Error uploading file :(")
             }
         }
     }
@@ -37,13 +41,17 @@ function FileUploader() {
             <div>
                 <input type="file" onChange={handleFileChange} accept="application/pdf" />
             </div>
-
+            
             {file && (
                 <button
                     onClick={handleUpload}
                     className="submit mt-2"
                 >Upload a file</button>
             )}
+
+            <div>
+                <a>{responseText}</a>
+            </div>
         </div>
     );
 }

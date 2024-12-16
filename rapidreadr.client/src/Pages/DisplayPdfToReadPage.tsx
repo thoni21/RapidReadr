@@ -21,6 +21,7 @@ function DisplayPdfToReadPage() {
                 <OneWordTextDisplayer pdfId={id} speed={speedToRead} />
             ) : (
                 <form onSubmit={WordsPerMinuteToMiliseconds}>
+                    <h4>How Many Words Per Minute?</h4>
                     <input
                         type="number"
                         value={wordsPerMinute === "" ? "" : wordsPerMinute}
