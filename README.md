@@ -7,9 +7,12 @@ When I was 14 or 15 years old, I had a teacher who introduced us to a website de
 <h2>Goal</h2>
 The goal of the web app is to allow people to read and understand their documents at a pace that they would not otherwise be able to achieve with normal reading techniques.
 
-<h2>Preview</h2>
+<h2>Reading Method Showcase</h2>
+
 ![Preview Web App Main Feature](https://github.com/user-attachments/assets/8173ce30-2a19-47b7-a4b4-b10b07fe685a)
+
 <h2>Technologies Used</h2>
+
 ### Backend
 - **ASP.NET Core (Web API)**
 - **ASP.NET Identity** for authentication
@@ -43,25 +46,33 @@ The goal of the web app is to allow people to read and understand their document
    ```bash
    cd RapidReadr/RapidReadr.Server
    ```
+   
+3. **Update appsettings.json BasePath:**
 
-3. **Create .env file, and database connection string:**
+   Update the `appsettings.json` file with the path to your file storage:
+   ```
+   "FileStorage": {
+    "BasePath": "your/path/here"
+     }
+   ```
+   
+4. **Create .env file, and database connection string:**
 
    Create the `.env` file and create the connection string to match your local PostgreSQL database setup:
    ```
    DB_CONNECTION_STRING=Host=localhost; Database=rapid-readr; Username=your_username; Password=your_password
    ```
 
-4. **Apply migrations to the database:**
+5. **Apply migrations to the database:**
 
    Run the following command to apply any pending migrations to your database:
    ```bash
    dotnet ef database update
    ```
 
-5. **Run the project:**
+6. **Run the project:**
 
    Finally, start the project by using the following command (still in the `RapidReadr.Server` directory):
    ```bash
    dotnet run --launch-profile https
    ```
-
