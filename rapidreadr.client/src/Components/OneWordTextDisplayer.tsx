@@ -10,6 +10,7 @@ const OneWordTextDisplayer: React.FC<OneWordTextDisplayerProps> = ({ pdfId, spee
     const [wordToDisplay, setWordToDisplay] = useState<string>("");
     const [splitText, setSplitText] = useState<string[]>([]);
     const [showButton, setShowButton] = useState<string>("none");
+    const [isPlaying, setIsPlaying] = useState(false);
 
 
     let currentIndex = 0;
@@ -29,6 +30,8 @@ const OneWordTextDisplayer: React.FC<OneWordTextDisplayerProps> = ({ pdfId, spee
 
     const HandleText = () => {
 
+        setIsPlaying(!isPlaying);
+
         if (intervalId) {
             clearInterval(intervalId);
         }
@@ -47,8 +50,23 @@ const OneWordTextDisplayer: React.FC<OneWordTextDisplayerProps> = ({ pdfId, spee
 
     return (
         <div>
-            <a>{wordToDisplay}</a>
-            <button style={{ display: showButton }} onClick={HandleText}>Start</button>
+            <h1>{wordToDisplay}</h1>
+            <div className="d-flex justify-content-center align-items-center my-3">
+                <button className="btn btn-primary rounded-circle mx-2">
+                    <i className="bi bi-arrow-left"></i>
+                </button>
+
+                <button
+                    className="btn btn-primary rounded-circle mx-2"
+                    onClick={HandleText}
+                >
+                    <i className={`bi ${isPlaying ? "bi-pause-fill" : "bi-play-fill"}`}></i>
+                </button>
+
+                <button className="btn btn-primary rounded-circle mx-2">
+                    <i className="bi bi-arrow-right"></i>
+                </button>
+            </div>
         </div>
     )
 }
